@@ -22,3 +22,12 @@ curl -sSL https://raw.githubusercontent.com/Joshwaamein/custom-zsh/main/ubuntu.s
 or
 
 curl -sSL https://raw.githubusercontent.com/Joshwaamein/custom-zsh/main/redhat.sh | bash
+
+## GUI Customisation
+
+If using a desktop enviromnent it is *highly* reccomended to change your terminal environment colours to:
+- Background: #000000
+- Text: #29B443
+- Bold Text: #24FF00
+
+![neo matrix](https://imgs.search.brave.com/ugavthcFrw8QDSKYgkLRkVgY2kbT3ZelPsfMaDVwNw4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXZlLmNv/bS93cC93cDgwNjM4/MTEuanBn)
