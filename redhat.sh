@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "This script will configure your zsh. Do not run this script as sudo. This script should only be run on a fresh install of Amazon Linux. You can cancel the script within the next 5 seconds"
+echo "This script will configure your zsh. Do not run this script as sudo. This script should only be run on a fresh install of a Red Hat-based system. You can cancel the script within the next 5 seconds"
 sleep 5
 
 echo "Current user is $USER"
@@ -10,18 +10,20 @@ if [ "$EUID" -eq 0 ]; then
   exit 1
 fi
 
-echo "Patching OS"
-sudo yum update -y
+if [ -f "$HOME/.zshrc" ]; then
+    mv "$HOME/.zshrc" "$HOME/.zshrc.backup"
+    echo "Existing .zshrc backed up to .zshrc.backup"
+fi
 
-echo "Install prerequisite packages (ZSH, powerline & powerline fonts)"
-sudo yum install zsh git -y
-sudo yum install python3-pip -y
-sudo pip3 install powerline-status
+echo "Updating system packages"
+sudo dnf update -y
+
+echo "Install prerequisite packages (ZSH, git, powerline & powerline fonts)"
+sudo dnf install zsh git powerline powerline-fonts -y
 
 echo "Installing fortune, cowsay, lolcat"
-sudo yum install epel-release -y
-sudo yum install fortune-mod cowsay -y
-sudo pip3 install lolcat
+sudo dnf install fortune-mod cowsay ruby -y
+sudo gem install lolcat
 
 echo "Clone the Oh My Zsh Repo to current working directory"
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
@@ -42,5 +44,4 @@ echo "source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> "$HO
 echo "Adding cow :)"
 echo "fortune | cowsay | lolcat" >> "$HOME/.zshrc"
 
-echo "Reload Shell"
-exec zsh
+echo "Shell changed to zsh. Please log out and log back in for the changes to take effect."
