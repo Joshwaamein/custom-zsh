@@ -30,4 +30,6 @@ If using a desktop enviromnent it is *highly* reccomended to change your termina
 - Text: #29B443
 - Bold Text: #24FF00
 
+You can use the file ubuntu-gnome-terminal.sh to do this automatically.
+
 ![neo matrix](https://imgs.search.brave.com/ugavthcFrw8QDSKYgkLRkVgY2kbT3ZelPsfMaDVwNw4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXZlLmNv/bS93cC93cDgwNjM4/MTEuanBn)
