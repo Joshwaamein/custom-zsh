@@ -45,5 +45,5 @@ echo "source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> "$HO
 echo "Adding cow :)"
 echo "fortune | cowsay | lolcat" >> "$HOME/.zshrc"
 
-echo "Reload Shell"
-exec zsh
+echo "Shell changed to zsh. Please log out and log back in for the changes to take effect."
+
