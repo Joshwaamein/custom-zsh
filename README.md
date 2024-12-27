@@ -16,11 +16,11 @@ This script automates the setup of Zsh with Oh My Zsh and additional customisati
 
 ## Usage
 ### Download the script and pipe to bash. Do not run the script with Sudo. 
-
+### Ubuntu
 curl -sSL https://raw.githubusercontent.com/Joshwaamein/custom-zsh/main/ubuntu.sh | bash
-
-or
-
+### Ubuntu with GNOME Terminal
+curl -sSL https://raw.githubusercontent.com/Joshwaamein/custom-zsh/main/ubuntu-gnome-terminal.sh | bash
+### Redhat
 curl -sSL https://raw.githubusercontent.com/Joshwaamein/custom-zsh/main/redhat.sh | bash
 
 ## GUI Customisation
