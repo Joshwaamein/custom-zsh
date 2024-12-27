@@ -10,12 +10,18 @@ if [ "$EUID" -eq 0 ]; then
   exit 1
 fi
 
+if [ -f "$HOME/.zshrc" ]; then
+    mv "$HOME/.zshrc" "$HOME/.zshrc.backup"
+    echo "Existing .zshrc backed up to .zshrc.backup"
+fi
+
+
 echo "Patching OS"
 sudo apt-get update
 sudo apt-get upgrade -y
 
-echo "Install prerequisite packages (ZSH, powerline & powerline fonts)"
-sudo apt-get install zsh powerline fonts-powerline -y
+echo "Install prerequisite packages (ZSH, git, powerline & powerline fonts)"
+sudo apt-get install zsh git powerline fonts-powerline -y
 
 echo "Installing fortune, cowsay, lolcat"
 sudo apt-get install fortune cowsay lolcat -y
