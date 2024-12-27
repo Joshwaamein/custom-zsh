@@ -1,4 +1,4 @@
-# zsh-config-script
+# custom-zsh
 configure zsh with one script!
 
 
