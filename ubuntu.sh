@@ -33,7 +33,7 @@ echo "Create a New ZSH configuration file"
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 
 echo "Change your Default Shell"
-chsh -s $(which zsh)
+sudo chsh -s $(which zsh) $USER
 
 echo "Setting Preferred Theme"
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="duellj"/g' "$HOME/.zshrc"
