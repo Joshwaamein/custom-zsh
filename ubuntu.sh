@@ -1,49 +1,47 @@
 #!/bin/bash
 
-echo "This script will configure your zsh. Do not run this script as sudo. This script should only be run on a fresh install of Ubuntu. You can cancel the script within the next 5 seconds"
+echo -e "\e[34mThis script will configure your zsh. Do not run this script as sudo. This script should only be run on a fresh install of Ubuntu. You can cancel the script within the next 5 seconds\e[0m"
 sleep 5
 
-echo "Current user is $USER"
+echo -e "\e[34mCurrent user is $USER\e[0m"
 
 if [ "$EUID" -eq 0 ]; then
-  echo "Please do not run as root"
+  echo -e "\e[34mPlease do not run as root\e[0m"
   exit 1
 fi
 
 if [ -f "$HOME/.zshrc" ]; then
     mv "$HOME/.zshrc" "$HOME/.zshrc.backup"
-    echo "Existing .zshrc backed up to .zshrc.backup"
+    echo -e "\e[34mExisting .zshrc backed up to .zshrc.backup\e[0m"
 fi
 
-
-echo "Patching OS"
+echo -e "\e[34mPatching OS\e[0m"
 sudo apt-get update
 sudo apt-get upgrade -y
 
-echo "Install prerequisite packages (ZSH, git, powerline & powerline fonts)"
+echo -e "\e[34mInstall prerequisite packages (ZSH, git, powerline & powerline fonts)\e[0m"
 sudo apt-get install zsh git powerline fonts-powerline -y
 
-echo "Installing fortune, cowsay, lolcat"
+echo -e "\e[34mInstalling fortune, cowsay, lolcat\e[0m"
 sudo apt-get install fortune cowsay lolcat -y
 
-echo "Clone the Oh My Zsh Repo to current working directory"
+echo -e "\e[34mClone the Oh My Zsh Repo to current working directory\e[0m"
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
-echo "Create a New ZSH configuration file"
+echo -e "\e[34mCreate a New ZSH configuration file\e[0m"
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 
-echo "Change your Default Shell"
+echo -e "\e[34mChange your Default Shell\e[0m"
 sudo chsh -s $(which zsh) $USER
 
-echo "Setting Preferred Theme"
+echo -e "\e[34mSetting Preferred Theme\e[0m"
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="duellj"/g' "$HOME/.zshrc"
 
-echo "Configure Syntax Highlighting"
+echo -e "\e[34mConfigure Syntax Highlighting\e[0m"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.zsh-syntax-highlighting" --depth 1
 echo "source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> "$HOME/.zshrc"
 
-echo "Adding cow :)"
+echo -e "\e[34mAdding cow :)\e[0m"
 echo "fortune | cowsay | lolcat" >> "$HOME/.zshrc"
 
-echo "Shell changed to zsh. Please log out and log back in for the changes to take effect. Alternatively run 'exec zsh'"
-
+echo -e "\e[34mShell changed to zsh. Please log out and log back in for the changes to take effect. Alternatively run 'exec zsh'\e[0m"
